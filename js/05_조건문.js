@@ -137,6 +137,71 @@ function ageCheck2(){
     
     alert(result);
 }
-    
-    
 
+
+/* 
+input 요소에 작성된 값 얻어오기 : input요소.value
+html 요소에 작성된 내용 얻어오기 : html요소.innerText 
+*/
+
+
+
+/** 두 수 A, B를 입력 받아 A가 배수가 맞는지 확인 */
+function check4(){
+    
+    // id가 inputA, inputB인 요소를 얻어와 변수에 저장
+    const inputA = document.getElementById("inputA");
+    const inputB = document.getElementById("inputB");
+
+    //1) A,B 중 하나라도 입력되지 않을 경우
+    //   -> "입력되지 않은 값이 존재합니다"
+
+
+    // "string".length : 문자열의 길이 반환
+
+    // inputA 또는 inputB 중 하나라도 입력되지 않은 경우
+    if(inputA.value.length === 0 || inputB.value.length === 0) {  
+        alert("입력되지 않은 값이 존재합니다");
+        return; // 함수를 즉시 종료하고 호출한 곳으로 돌아감 
+                // -> 함수를 수행할 수 없는 상태여서 미리 종료
+    }
+    
+    // 위 if문 건너 뜀 == 둘 다 입력된 상태
+    
+    const v1 = Number(inputA.value);
+    const v2 = Number(inputB.value);
+
+
+
+    // 2) A가 B보다 작을 경우
+    // -> "A가 B보다 작습니다."
+    if(v1 < v2){
+        alert("A가 B보다 작습니다");
+        return;
+    }
+
+
+    // 위 if문 건너뜀
+    // == A,B가 모두 입력됨 + A가 B보다 크거나 같음
+
+
+    // 3) A가 B보다 클 경우
+    // -> 배수 판별 수행
+    
+    if(v1%v2 === 0){    //A가 B의 배수가 맞을 경우
+        alert(`${v1}은 ${v2}의 배수가 맞습니다`);
+        return;
+    }
+
+
+    alert(`${v1}은 ${v2}의 배수가 아닙니다`);
+    
+}
+
+
+
+/** 입력된 수가 3,4,5의 배수가 맞는지 확인 */
+function check5(){
+    const input5 = document.getElementById("input5");
+    
+}
