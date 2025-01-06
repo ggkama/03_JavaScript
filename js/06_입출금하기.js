@@ -53,52 +53,100 @@ function test(){
 
 }
 
-/** 입금하기 */  // 금액 입력 - 입금버튼 - 잔액으로 추가 
+// /** 입금하기 */  // 금액 입력 - 입금버튼 - 잔액으로 추가 
+// function deposit(){
+
+//     // 입력된 금액을 얻어와 number 타입으로 변환 후 balance 변수에 누적
+//     const val = Number(amount.value);
+//     balance += val;
+//     output.innerText = balance; // 화면에 누적된 잔액 출력
+//     amount.value = "0"; // 입력하려고 작성한 금액 삭제
+// }
+
+
+// /** 출금하기 */ // balance - amount 
+// function withdrawal(){
+
+//     const pw = prompt("비밀번호를 입력하세요"); // 비밀번호 입력 받기
+
+//     if(pw === null){ // prompt에서 취소버튼 클릭
+//         alert("비밀번호 입력 취소됨");
+//         return;
+//     }
+    
+//     if(pw !== password){ // 비밀번호 틀렸을 경우
+//         alert("비밀번호가 틀렸습니다.");
+//         return;
+//     } 
+
+//     // 출금
+//     const v1 = Number(amount.value); // 입력받은금액 number 타입 변환
+
+//     // 출금할 금액이 잔액(balance) 보다 작거나 같은 경우
+//     //  -> 잔액(balance)에서 출금 금액만큼 감소 시킨 후
+//     //    alert("OOO원이 출금 되었습니다. 남은 잔액 : OOO원") 출력
+//     if(val > balance){
+//         alert("출금 금액이 잔액보다 클 수 없습니다.");
+//         return;
+//     }
+
+//     // 출금할 금액이 잔액보다 작거나 같은경우
+//     // -> 잔액에서 출금만큼 감소시킨 후
+//     balance -= val; // balance를 val 만큼 차감
+
+//     output.innerText = balance; // 화면에 차감된 금액 출력
+//     amount.value = ""; // 입력된 금액 삭제
+
+
+//     // alert("000원이 출금 되었습니다. 남은 잔액 : 000원") 출력
+//     alert(`${val}원이 출금 되었습니다. 남은잔액 : ${balance원}`);
+
+// }
+/** 입금 */
 function deposit(){
 
     // 입력된 금액을 얻어와 number 타입으로 변환 후 balance 변수에 누적
-    const val = Number(amount.value);
-    balance += val;
+    balance += Number(amount.value);
+    // balance = balance + Number(amount.value);
+  
     output.innerText = balance; // 화면에 누적된 잔액 출력
-    amount.value = "0"; // 입력하려고 작성한 금액 삭제
-}
-
-
-/** 출금하기 */ // balance - amount 
-function withdrawal(){
-
-    const pw = prompt("비밀번호를 입력하세요"); // 비밀번호 입력 받기
-
-    if(pw === null){ // prompt에서 취소버튼 클릭
-        alert("비밀번호 입력 취소됨");
-        return;
+    amount.value = ""; // 입력하려고 작성한 금액 삭제
+  }
+  
+  
+  /** 출금 */
+  function withdrawal(){
+    //  출금 버튼 클릭 시 prompt를 이용해 비밀번호를 입력 받기
+  
+    const pw = prompt("비밀번호를 입력하세요");
+  
+    if(pw === null){ // prompt에서 취소 클릭
+      alert("비밀번호 입력 취소");
+      return;
     }
-    
-    if(pw !== password){ // 비밀번호 틀렸을 경우
-        alert("비밀번호가 틀렸습니다.");
-        return;
-    } 
-
+  
+    if(pw !== password){ // 입력받은 pw와 전역변수 password 불일치
+      alert("비밀번호가 일치하지 않습니다");
+      return;
+    }
+  
     // 출금
-    const v1 = Number(amount.value); // 입력받은금액 number 타입 변환
-
-    // 출금할 금액이 잔액(balance) 보다 작거나 같은 경우
-    //  -> 잔액(balance)에서 출금 금액만큼 감소 시킨 후
-    //    alert("OOO원이 출금 되었습니다. 남은 잔액 : OOO원") 출력
+    const val = Number(amount.value); // 입력 받은 금액 number 타입 변환
+  
+    // 출금할 금액이 잔액(balance) 보다 큰 경우 
+    //  -> alert("출금 금액이 잔액보다 클 수 없습니다") 출력
     if(val > balance){
-        alert("출금 금액이 잔액보다 클 수 없습니다.");
-        return;
+      alert("출금 금액이 잔액보다 클 수 없습니다");
+      return;
     }
-
-    // 출금할 금액이 잔액보다 작거나 같은경우
-    // -> 잔액에서 출금만큼 감소시킨 후
+  
+    // 출금할 금액이 잔액(balance) 보다 작거나 같은 경우
+    //   -> 잔액(balance)에서 출금 금액만큼 감소 시킨 후
     balance -= val; // balance를 val 만큼 차감
-
+  
     output.innerText = balance; // 화면에 차감된 금액 출력
     amount.value = ""; // 입력된 금액 삭제
-
-
-    // alert("000원이 출금 되었습니다. 남은 잔액 : 000원") 출력
-    alert(`${val}원이 출금 되었습니다. 남은잔액 : ${balance원}`);
-
-}
+  
+    //   alert("OOO원이 출금 되었습니다. 남은 잔액 : OOO원") 출력
+    alert(`${val}원이 출금 되었습니다. 남은 잔액 : ${balance}원`);
+  }
