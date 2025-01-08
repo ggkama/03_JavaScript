@@ -276,3 +276,71 @@ function check6(){
 }
 
 
+/**2차원 배열 확인2 */
+/* 4행 4열짜리 2차원 배열에 1~16 사이 난수 배치(중복 x)
+    1) 콘솔에 출력
+    2) prompt를 이용해서 1~16사이 숫자를 입력 받아
+       2차원 배열 어디에 위치하는지 검색해서 출력하기
+*/
+function check7(){
+
+    // 중복되지 않는 난수 16개를 저장한 1차원 배열 생성
+    const randomArr = []; 
+
+    for(let i=0; i < 16 ; i++){
+
+        const num = Math.floor(Math.random() * 16 + 1); // 0에서 16사이 난수
+
+        if(randomArr.includes(num)){ // 중복이 있을 경우
+            i--;
+            continue;
+        }
+
+        // 중복 x일때
+        randomArr[i] = num;
+    }
+    console.log("randomArr : ", randomArr);
+    
+    
+    // * 2중 for문을 이용해서 2차원 배열 모든 요소 접근하기
+
+    let index = 0; // randomArr의 요소를 접근하기 위한 변수 선언
+
+    const arr = []; //2차원 배열
+    
+    for(let row=0 ; row < 4 ; row++){ // 행반복
+
+        arr[row] = []; // 행 생성(1차원 배열)
+        
+        for(let col = 0 ; col < 4 ; col++){ // 열반복
+          //  arr[row][col] =  `(${row}, ${col})`; //열에 데이터 추가
+
+          // randomArr 배열의 요소를 하나씩
+          // arr[row][col]에 대입
+          arr[row][col] = randomArr[index];
+          index++; // index를 1 증가 시켜 randomArr 다음 요소 지정하기
+        }
+        //arr[row][col] = randomArr[index++]; //후위 연산 이용가능
+
+    }
+
+    console.log(arr);
+
+    // 2) prompt를 이용해서 1~16사이 숫자를 입력 받아
+    // (정상 입력했다고 가정)
+    const input = Number(prompt("1~16사이 숫자 입력"));
+    
+    // 2차원 배열 어디에 위치하는지 검색해서 출력하기
+    for(let row = 0; row < arr.length ; row++){ // 행 반복
+        
+        for(let col = 0; col < arr[row].length ; col++){ // 열 반복
+
+            // arr[row][col]에 저장된 값과 입력 값(input)이 같을 때
+            if(arr[row][col] === input){
+                alert(`${input}은/는 (${row}, ${col})에 있습니다`);
+                return; // 값을 찾으면 함수를 종료
+            }
+        }
+    }
+}
+
