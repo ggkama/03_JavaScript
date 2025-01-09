@@ -120,3 +120,139 @@ function nameTest(){
     // 내부에 내용 작성(HTML코드를 해석O)
     div.innerHTML = content;
 }
+
+
+/** CSS 선택자를 이용한 요소 접근 */
+function cssTest(){
+
+    // target-div 속성 값이 css-div인 요소 하나 선택
+    const container = document.querySelector("[target-div = css-div]");
+    
+    // 요소 얻어져 왔는지 확인
+    console.log(container);
+    
+    container.style.width = "200px";
+    container.style.height = "200px";
+    container.style.border = "10px solid orange";
+    
+    
+    // const container = document.querySelector("css선택자");
+    // -> 여러 요소가 선택된 경우 "첫번째" 요소만 얻어옴
+    
+    const first = document.querySelector("[target-div = css-div] > div")
+    
+    //첫번째만 선택되었는지 확인
+    console.log(first);
+
+    first.style.fontSize = "30px";
+    first.style.height = "100px";
+    first.style.border = "10px solid black";
+
+
+    // documnet.querySelectorAll("css선택자")
+    // -> 모든 요소를 선택해서 (유사)배열 형태로 반환
+    const divs = document.querySelectorAll("[target-div = css-div]");
+    console.log(divs)
+
+    const colors = ['yellow', 'pink']; // 배열 선언 및 초기화
+
+    for(let i = 0 ; i < divs.length ; i++){
+        divs[i].style.height="50%";
+        divs[i].style.display="flex";
+        divs[i].style.justifyContent="center"; // 중심축 방향 가운데
+        divs[i].style.alignItems ="center"; //교차축 방향 가운데
+        divs[i].style.backgroundColor =colors[i]; 
+
+
+    }
+
+}
+
+
+// 채팅 입력후 초기화 & 메시지 입력
+
+// function readValue() {
+//     
+//     const userInput = document.getElementById('userInput');
+//     const chattingBg = document.getElementById('chattingBg');
+
+//    
+//     const message = userInput.value.trim();
+// 
+//     
+//     if (message) {
+    //         // 채팅 메시지 요소 
+    //         const newMessage = document.createElement('p');
+    //         const messageSpan = document.createElement('span');
+    
+    //         // 입력값 말풍선에 추가
+    //         messageSpan.textContent = message;
+    
+    //         // 생성한 span을 p에 추가
+    //         newMessage.appendChild(messageSpan);
+    
+    //         // 채팅 출력 화면에 새 메시지 추가
+    //         chattingBg.appendChild(newMessage);
+    
+    //         // 입력 필드 초기화
+    //         userInput.value = '';
+    
+    //         // 출력 영역을 가장 아래로 스크롤
+    //         chattingBg.scrollTop = chattingBg.scrollHeight;
+    //     }
+    // }
+    
+    
+    /* 카카오톡 채팅 만들기 */
+    function readValue(){
+
+        
+        const input = document.querySelector("#userInput");
+        const bg = document.querySelector("#chattingBg");
+        
+        // 1) 입력값이 없을경우
+        //  - 아무 값도 입력x
+        //  - 작성된 내용이 공백 문자(띄어쓰기, 탭, 엔터)
+        
+        // * 문자열.trim() : 문자열 좌우 공백을 제거
+        if(input.value.trim().length === 0){
+            alert("채팅내용을 입력해주세요.");
+            input.value = ""; // 입력된 공백 모두 제거
+            input.focus(); // input 요소에 초점을 맞춤
+            return;
+        }
+        
+        /* 입력된 값을 읽어와 채팅 화면에 누적 */
+        bg.innerHTML += `<p><span>${input.value}</span></p>`;
+        
+        input.value = "";
+        //input에 focus 유지
+        input.focus();
+
+        // 스크롤 아래고정
+
+        //요소.scrollHeight
+        // -> 스크롤되어 가려진 부분까지 포함한 요소 전체 높이
+
+        //요소.scrollTop
+        // -> 스크롤 제일 위에서부터 현재 위치
+
+        //요소.scrollTop = "값px"
+        // -> 스크롤을 위에서 지정된 값만큼 떨어진 위치로 이동
+
+        //스크롤을 제일 아래로 확인
+        chattingBg.scrollTop = chattingBg.scrollHeight;
+        
+        // #userInput인 요소에 "Enter"키가 입력된 경우 채팅추가
+        document.querySelector("#userInput")
+        .addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {  // 엔터키 입력 시
+                readValue();  // 메시지 전송 함수 호출
+            }
+        });
+    }
+
+
+
+
+    
