@@ -217,20 +217,3 @@ changeBtn.addEventListener("click", function(){
 
 
 
-
-/* 
-   
-    boxes.forEach(box => {
-        const inputColor = box.querySelector('.inputColor');  // input 요소 가져오기
-        const displayDiv = box.querySelector('.display');  // display 요소 가져오기
-        const colorValue = inputColor.value.trim();  // 입력된 색상 값 가져오기 (공백 제거)
-
-        if (colorValue) {
-            // 입력된 값이 유효한 CSS 색상인지 검사
-            displayDiv.style.backgroundColor = colorValue;  // display 요소의 배경색 변경
-        } else {
-            alert('올바른 색상 값을 입력해주세요!');  // 공백일 경우 경고창 표시
-        }
-    });
-});
- */
