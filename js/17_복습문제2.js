@@ -1,14 +1,20 @@
-const boxes = document.querySelectorAll(".box");
 const colorInputs = document.querySelectorAll(".color-input");
 
-// i == 0 ~ 4
-for(let i=0 ; i<boxes.length ; i++){ 
+// 인덱스 이용 -> 요소 탐색 코드로 변경
+
+// 향상된 for문 : 0~끝까지 모든 요소를 순차접근하는 용도의 for문
+for(let input of colorInputs){
+  // input === colorInputs[i], i는 0부터 끝까지 1씩증가
   
-  colorInputs[i].addEventListener("keyup", function(){
-    boxes[i].style.backgroundColor = colorInputs[i].value;
+  input.addEventListener("keyup", () => {
+
+    // 입력된 input의 이전 형제(div.box)의 배경색을 변경
+    input.previousElementSibling.style.backgroundColor = input.value; 
+
   });
 }
 
+const boxes = document.querySelectorAll(".box");
 
 // radio 버튼 + change 이벤트
 
@@ -16,17 +22,17 @@ for(let i=0 ; i<boxes.length ; i++){
 //  input에 작성된 값 또는 체크박스/라디오 체크 여부가 변했을 때
 
 const radioBtns 
-  = document.querySelectorAll("[name = opacity-btn]");
+= document.querySelectorAll("[name = opacity-btn]");
 
 for(let i=0 ; i<radioBtns.length ; i++){
-
+  
   // 라디오 버튼의 값이 변했을 때를 감지
   radioBtns[i].addEventListener("change", function(e){
     // e : 이벤트 객체(이벤트 관련 정보가 담겨있음)
     // console.log(e);
     // radio 버튼은  체크 X -> 체크 O 
     // change 이벤트가 감지된다!!!
-
+    
     // e.target : 이벤트가 발생한 요소
 
     // 체크된 라디오 버튼의 value를 얻어오기
