@@ -8,7 +8,7 @@ btn.addEventListener("click", () => {
   let sum = 0;
 
   for (let fruit of fruitLi) {
-    console.log(fruit);
+    
 
     if (fruit.checked) {
       const label = fruit.nextElementSibling.innerText;
