@@ -1,0 +1,101 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  main{
+    width: 900px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px auto;
+  }
+  
+  .container{
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+  }
+  
+  #display{
+    height: 50px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .keypad{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    border-top : 4px solid #000000;
+  }
+  
+  .key{
+    width: 30%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    
+  }
+  
+  .key:hover{
+    background-color: #1e913b;
+  }
+  
+  .key:active{
+    transform: scale(0.9);
+  }
+  
+  
+  .container > button{
+    margin: 7px;
+    height: 45px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    
+  }
+  
+  #addBtn{
+    color : rgb(32, 132, 165);
+    border: 2px solid rgb(32, 132, 165);
+  }
+  
+  #addBtn:hover{
+    color:white;
+    background-color: rgb(32, 132, 165);
+  }
+  
+  #resetBtn{
+  
+    color : gray;
+    border: 2px solid gray;
+  }
+  
+  #resetBtn:hover{
+    color:white;
+    background-color: gray;
+  }
+
+
+#list {
+    font-size: 14px;
+    text-align: center;
+    width: 300px;
+    
+}
+#list > div{
+    font-size: 15px;
+    text-align: left;
+} 
+   
+
